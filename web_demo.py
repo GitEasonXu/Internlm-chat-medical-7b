@@ -11,7 +11,7 @@ from dataclasses import asdict
 
 import streamlit as st
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from modelscope import AutoModelForCausalLM, AutoTokenizer
 from transformers.utils import logging
 
 import sys
@@ -27,7 +27,7 @@ def on_btn_click():
 
 @st.cache_resource
 def load_model():
-    model_name_or_path = "/root/model/internlm-chat-medical-7b"
+    model_name_or_path = "GitEason/internlm-chat-medical-7b"
     model = (
         AutoModelForCausalLM.from_pretrained(model_name_or_path, trust_remote_code=True)
         .to(torch.bfloat16)
